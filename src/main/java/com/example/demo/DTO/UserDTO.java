@@ -1,20 +1,13 @@
-package com.example.demo.Entity;
+package com.example.demo.DTO;
 
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.sql.Timestamp;
-
 @Data
-@Getter
-@Setter
-public class User {
-    Integer userId;
+public class UserDTO {
     @NotEmpty(message = "username is required")
     String username;
     @NotEmpty(message = "Password is required")
@@ -26,8 +19,4 @@ public class User {
     String email;
     @NotEmpty
     String status;
-    Timestamp createdAt;
-    Timestamp updatedAt;
-    @NotEmpty
-    private byte[]avator;
 }

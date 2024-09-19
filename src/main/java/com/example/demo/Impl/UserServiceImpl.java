@@ -11,13 +11,20 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
     @Autowired
     UserMapper userMapper;
+
     @Override
-    public void addUser(User user) {
-        userMapper.addUser(user);
+    public void addUser(String username, String password, String email, String gender, String status, byte[] avator) {
+        userMapper.addUser(username, password, email, gender, status, avator);
+
     }
 
     @Override
     public User getUser(int id) {
         return userMapper.getUserById(id);
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        return userMapper.getUserByEmail(email);
     }
 }
