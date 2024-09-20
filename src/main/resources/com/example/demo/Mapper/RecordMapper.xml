@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.Mapper.RecordMapper">
+    <select id="getMoodHistory" resultType="com.example.demo.DTO.MoodHistoryDTO">
+        select userId,recordId,Mood,createdAt from record
+        <where>
+            <if test="type==1">
+                DATE(createdAt) = CURDATE()
+            </if>
+            <if test="type==2">
+                WEEK(createdAt) = WEEK(CURDATE()) AND YEAR(createdAt) = YEAR(CURDATE())
+            </if>
+            <if test="type==3">
+                MONTH(createdAt) = MONTH(CURDATE()) AND YEAR(createdAt) = YEAR(CURDATE())
+            </if>
+            AND userId = #{userId} ORDER BY createdAt ASC;
+        </where>
+
+
+    </select>
+
+</mapper>
