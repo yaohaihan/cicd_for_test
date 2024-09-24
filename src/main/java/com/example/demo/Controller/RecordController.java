@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/Mapping")
+@RequestMapping("/Record")
 public class RecordController {
     @Autowired
     RecordService recordService;
@@ -23,11 +23,14 @@ public class RecordController {
 
     @GetMapping("/History")
     public Result getMoodHistory(@RequestParam int queryPeriod){
-//        1：当天；2：本周；
+//        1：当天；2：本周；3：本月。
         Map<String, Object> claims = ThreadLocalUtil.get();
         int userId = (int)claims.get("id");
         List<MoodHistoryDTO> result = recordService.getMoodHistory(queryPeriod,userId);
         return Result.success(result);
     }
+
+
+
 
 }

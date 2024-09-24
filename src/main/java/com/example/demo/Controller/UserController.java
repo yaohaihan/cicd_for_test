@@ -30,7 +30,8 @@ public class UserController {
     @PostMapping("/addUser")
     public Result addUser(@ModelAttribute @Validated UserDTO userDTO, @RequestParam MultipartFile avatorPic) throws IOException {
         byte[]avator = avatorPic.getBytes();
-        userService.addUser(userDTO.getUsername(), userDTO.getPassword(), userDTO.getEmail(), userDTO.getGender(), userDTO.getStatus(), avator);
+        String encryptedPassword = DigestUtils.md5DigestAsHex(userDTO.getPassword().getBytes());
+        userService.addUser(userDTO.getUsername(), encryptedPassword, userDTO.getEmail(), userDTO.getGender(), userDTO.getStatus(), avator);
         return Result.success();
     }
 
@@ -38,7 +39,7 @@ public class UserController {
     public Result login(@RequestParam String email, @RequestParam String password){
         User user = userService.getUserByEmail(email);
         if(user!=null){
-            if(user.getPassword().equals(password)){
+            if(user.getPassword().equals(DigestUtils.md5DigestAsHex(password.getBytes()))){
                 Map<String, Object>claims = new HashMap<>();
                 claims.put("email", user.getEmail());
                 claims.put("id",user.getUserId());
