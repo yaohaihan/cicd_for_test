@@ -30,6 +30,9 @@ public class UserController {
     @PostMapping("/addUser")
     public Result addUser(@ModelAttribute @Validated UserDTO userDTO, @RequestParam MultipartFile avatorPic) throws IOException {
         byte[]avator = avatorPic.getBytes();
+        if(userService.getUserByEmail(userDTO.getEmail())!=null){
+            return Result.error("Account already exist");
+        }
         String encryptedPassword = DigestUtils.md5DigestAsHex(userDTO.getPassword().getBytes());
         userService.addUser(userDTO.getUsername(), encryptedPassword, userDTO.getEmail(), userDTO.getGender(), userDTO.getStatus(), avator);
         return Result.success();

@@ -20,5 +20,19 @@
 
 
     </select>
+    <select id="getIntensity" resultType="com.example.demo.DTO.IntensityDTO">
+        SELECT DATE(createdAt) AS date, COUNT(*) AS post_count
+        FROM Record
+        <where>
+        userId = #{userId}
+        <if test="type==1">
+        AND WEEK(createdAt) = WEEK(CURDATE()) AND YEAR(createdAt) = YEAR(CURDATE())
+        </if>
+        <if test="type==2">
+            AND MONTH(createdAt) = MONTH(CURDATE()) AND YEAR(createdAt) = YEAR(CURDATE())
+        </if>
+        </where>
+        GROUP BY DATE(createdAt) ORDER BY DATE(createdAt);
+    </select>
 
 </mapper>
