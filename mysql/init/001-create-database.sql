@@ -69,11 +69,11 @@ CREATE TABLE MoodHistory (
 
 
 CREATE TABLE photo (
-                        photo_id INT PRIMARY KEY AUTO_INCREMENT,
-                        record_id INT,
-                        photo_data BLOB,
-                        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                        FOREIGN KEY (record_id) REFERENCES Record(recordId)
+                       photo_id INT PRIMARY KEY AUTO_INCREMENT,
+                       record_id INT,
+                       photo_data BLOB,
+                       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                       FOREIGN KEY (record_id) REFERENCES Record(recordId)
 );
 
 
@@ -83,5 +83,3 @@ ALTER TABLE tb_user ADD COLUMN avator BLOB;
 ALTER TABLE tb_user MODIFY COLUMN avator LONGBLOB;
 
 ALTER TABLE photo MODIFY COLUMN photo_data LONGBLOB;
-
-
