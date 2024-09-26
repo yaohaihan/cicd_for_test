@@ -16,8 +16,8 @@ services:
       - emotion-net
   emotion-test:
     build:
-      context: ./Docker
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: Docker/Dockerfile
     container_name: emotion-container
     ports:
       - "8080:8080"
