@@ -19,6 +19,7 @@ public class UserController {
     @PostMapping("addUser")
     public Result addUser(@RequestBody User user){
         userService.addUser(user);
+        System.out.println();
         return Result.success();
     }
 
