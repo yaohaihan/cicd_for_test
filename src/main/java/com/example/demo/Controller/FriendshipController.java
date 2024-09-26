@@ -19,7 +19,6 @@ public class FriendshipController {
     @Autowired
     private UserService userService;
 
-
     @PostMapping("/BuildRelations")
     public Result BuildRelations(@RequestParam int userId1,@RequestParam int userId2){
         if(userService.getUser(userId1)!=null&&userService.getUser(userId2)!=null){
