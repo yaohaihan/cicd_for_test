@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  mysql:
+    image: mysql
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: 123
+    volumes:
+      - "./mysql/conf:/etc/mysql/conf.d"
+      - "./mysql/data:/var/lib/mysql"
+      - "./mysql/init:/docker-entrypoint-initdb.d"
+    networks:
+      - emotion-net
+  emotion-test:
+    build:
+      context: ./Docker
+      dockerfile: Dockerfile
+    container_name: emotion-container
+    ports:
+      - "8080:8080"
+    networks:
+      - emotion-net
+    depends_on:
+      - mysql
+networks:
+  emotion-net:
+    name: hmall
