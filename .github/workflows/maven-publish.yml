@@ -31,8 +31,3 @@ jobs:
         docker-compose down
         docker-compose up --build --force-recreate -d
       working-directory: .  # 确保Docker Compose在项目根目录运行
-
-    - name: Publish to GitHub Packages Apache Maven
-      run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
-      env:
-        GITHUB_TOKEN: ${{ github.token }}
