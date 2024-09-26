@@ -7,7 +7,7 @@ CREATE DATABASE IF NOT EXISTS cicd_for_test
 USE cicd_for_test;
 
 
-CREATE TABLE tb_User (
+CREATE TABLE tb_user (
                          userId INT AUTO_INCREMENT PRIMARY KEY,
                          Username VARCHAR(50) NOT NULL,
                          Password VARCHAR(255) NOT NULL,
