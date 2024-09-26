@@ -6,9 +6,9 @@ import com.example.demo.Entity.User;
 import com.example.demo.Service.UserService;
 import com.example.demo.Utils.JwtUtil;
 import com.example.demo.Utils.Result;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotEmpty;
+//import jakarta.validation.Valid;
+//import jakarta.validation.constraints.Email;
+//import jakarta.validation.constraints.NotEmpty;
 import org.springframework.util.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -38,23 +38,23 @@ public class UserController {
         return Result.success();
     }
 
-    @GetMapping("/login")
-    public Result login(@RequestParam String email, @RequestParam String password){
-        User user = userService.getUserByEmail(email);
-        if(user!=null){
-            if(user.getPassword().equals(DigestUtils.md5DigestAsHex(password.getBytes()))){
-                Map<String, Object>claims = new HashMap<>();
-                claims.put("email", user.getEmail());
-                claims.put("id",user.getUserId());
-                String token = JwtUtil.genToken(claims);
-                return Result.success(token);
-            }
-            else{
-                return Result.error("please recheck the email/Password");
-            }
-        }
-        return Result.error("Invalid Account");
-    }
+//    @GetMapping("/login")
+//    public Result login(@RequestParam String email, @RequestParam String password){
+//        User user = userService.getUserByEmail(email);
+//        if(user!=null){
+//            if(user.getPassword().equals(DigestUtils.md5DigestAsHex(password.getBytes()))){
+//                Map<String, Object>claims = new HashMap<>();
+//                claims.put("email", user.getEmail());
+//                claims.put("id",user.getUserId());
+//                String token = JwtUtil.genToken(claims);
+//                return Result.success(token);
+//            }
+//            else{
+//                return Result.error("please recheck the email/Password");
+//            }
+//        }
+//        return Result.error("Invalid Account");
+//    }
 
 
 
