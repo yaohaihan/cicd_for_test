@@ -15,6 +15,4 @@ public class HelloWorldController {
     public String Hello(@PathVariable String name) {
         return "hello "+ name+" from team 7" ;
     }
-
-
 }
