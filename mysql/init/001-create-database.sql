@@ -7,7 +7,7 @@ CREATE DATABASE IF NOT EXISTS cicd_for_test
 USE cicd_for_test;
 
 
-CREATE TABLE tb_User (
+CREATE TABLE tb_user (
                          userId INT AUTO_INCREMENT PRIMARY KEY,
                          Username VARCHAR(50) NOT NULL,
                          Password VARCHAR(255) NOT NULL,
@@ -26,7 +26,7 @@ CREATE TABLE Record (
                         Mood INT,
                         createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                         updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                        FOREIGN KEY (userId) REFERENCES tb_User(userId) ON DELETE CASCADE
+                        FOREIGN KEY (userId) REFERENCES tb_user(userId) ON DELETE CASCADE
 );
 
 CREATE TABLE Post (
@@ -36,7 +36,7 @@ CREATE TABLE Post (
                       createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                       updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                       FOREIGN KEY (recordId) REFERENCES Record(recordId) ON DELETE CASCADE,
-                      FOREIGN KEY (userId) REFERENCES tb_User(userId) ON DELETE CASCADE
+                      FOREIGN KEY (userId) REFERENCES tb_user(userId) ON DELETE CASCADE
 );
 
 CREATE TABLE Likes (
@@ -45,7 +45,7 @@ CREATE TABLE Likes (
                        userId INT,
                        createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                        FOREIGN KEY (postId) REFERENCES Post(postId) ON DELETE CASCADE,
-                       FOREIGN KEY (userId) REFERENCES tb_User(userId) ON DELETE CASCADE,
+                       FOREIGN KEY (userId) REFERENCES tb_user(userId) ON DELETE CASCADE,
                        UNIQUE (postId, userId)
 );
 
@@ -54,8 +54,8 @@ CREATE TABLE Friendship (
                             userId1 INT,
                             userId2 INT,
                             createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                            FOREIGN KEY (userId1) REFERENCES tb_User(userId) ON DELETE CASCADE,
-                            FOREIGN KEY (userId2) REFERENCES tb_User(userId) ON DELETE CASCADE,
+                            FOREIGN KEY (userId1) REFERENCES tb_user(userId) ON DELETE CASCADE,
+                            FOREIGN KEY (userId2) REFERENCES tb_user(userId) ON DELETE CASCADE,
                             UNIQUE (userId1, userId2)
 );
 
@@ -64,7 +64,7 @@ CREATE TABLE MoodHistory (
                              userId INT,
                              mood INT,
                              createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                             FOREIGN KEY (userId) REFERENCES tb_User(userId) ON DELETE CASCADE
+                             FOREIGN KEY (userId) REFERENCES tb_user(userId) ON DELETE CASCADE
 );
 
 
