@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface FriendshipMapper {
     @Insert("INSERT INTO friendship(userId1,userId2) VALUES (#{userId1},#{userId2})")
-    @Options(useGeneratedKeys = true, keyProperty = "friendshipId")
     public void BuildRelationship(int userId1, int userId2);
 
     @Select("SELECT * from friendship where friendshipId = #{friendshipId}")
