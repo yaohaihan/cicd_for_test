@@ -27,7 +27,9 @@ jobs:
         ls -l
 
     - name: Run Docker Compose
-      run: docker-compose up -d
+      run: |
+        docker-compose down
+        docker-compose up --build --force-recreate -d
       working-directory: .  # 确保Docker Compose在项目根目录运行
 
     - name: Publish to GitHub Packages Apache Maven
