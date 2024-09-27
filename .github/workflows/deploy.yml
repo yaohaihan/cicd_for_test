@@ -13,7 +13,7 @@ jobs:
       - name: Download Artifacts
         uses: actions/download-artifact@v4
         with:
-          name: emotion-project-artifact
+          name: myEmotion
 
       - name: Transfer artifacts to EC2
         uses: appleboy/scp-action@master
