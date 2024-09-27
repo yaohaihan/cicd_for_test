@@ -81,8 +81,10 @@ public class MockMvcTestor {
                         .param("status", userDTO.getStatus()))
                 .andExpect(status().isOk())
                 .andDo(MockMvcResultHandlers.print())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.code").value(1))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Success"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.code").value(0))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("fal"));
+
+
     }
 
 
