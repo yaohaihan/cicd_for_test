@@ -1,0 +1,37 @@
+name: Deploy to EC2
+
+on:
+  workflow_run:
+    workflows: ["Build Maven Project"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: packaged-artifact
+
+      - name: Transfer artifacts to EC2
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          source: "*.jar"
+          target: "/home/ubuntu/ec2"
+
+      - name: Run Docker Compose on EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /home/ubuntu/ec2
+            docker-compose down
+            docker-compose up --build --force-recreate -d

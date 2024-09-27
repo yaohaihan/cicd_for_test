@@ -83,8 +83,6 @@ public class MockMvcTestor {
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.code").value(0))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("fal"));
-
-
     }
 
 
