@@ -8,7 +8,7 @@ on:
 
 jobs:
   deploy:
-    needs: [Build]
+    needs: [Build Maven Project]
     runs-on: ubuntu-latest
     steps:
       - name: Download Artifacts
