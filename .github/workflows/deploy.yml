@@ -8,6 +8,7 @@ on:
 
 jobs:
   deploy:
+    needs: [Build]
     runs-on: ubuntu-latest
     steps:
       - name: Download Artifacts
@@ -35,3 +36,10 @@ jobs:
             cd /home/ubuntu/ec2
             docker-compose down
             docker-compose up --build --force-recreate -d
+
+  # 新增的独立任务 "hello-world"
+  hello-world:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Hello World
+        run: echo "Hello, World!"
