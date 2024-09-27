@@ -33,14 +33,9 @@ jobs:
       run: |
         pwd
         ls -l
+        
+        
 
-    - name: Cache Docker layers
-      uses: actions/cache@v3
-      with:
-        path: /var/lib/docker
-        key: ${{ runner.os }}-docker-${{ hashFiles('**/Dockerfile') }}
-        restore-keys: |
-          ${{ runner.os }}-docker-
 
     - name: Run Docker Compose
       run: |
