@@ -9,12 +9,11 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    needs: build
     steps:
       - name: Download Artifacts
         uses: actions/download-artifact@v2
         with:
-          name: packaged-artifact
+          name: emotion-project-artifact
 
       - name: Transfer artifacts to EC2
         uses: appleboy/scp-action@master

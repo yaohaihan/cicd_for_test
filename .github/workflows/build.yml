@@ -37,5 +37,5 @@ jobs:
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: packaged-artifact
+          name: emotion-project-artifact
           path: target/*.jar
