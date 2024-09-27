@@ -29,14 +29,6 @@ jobs:
     - name: Build with Maven
       run: mvn clean package
 
-    - name: Check current directory and list files
-      run: |
-        pwd
-        ls -l
-        
-    
-
-
     - name: Run Docker Compose
       run: |
         docker-compose down
