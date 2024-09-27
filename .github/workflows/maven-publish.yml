@@ -15,6 +15,14 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Cache Maven dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+
     - name: Install Maven
       run: sudo apt-get update && sudo apt-get install -y maven
       
@@ -25,6 +33,14 @@ jobs:
       run: |
         pwd
         ls -l
+
+    - name: Cache Docker layers
+      uses: actions/cache@v3
+      with:
+        path: /var/lib/docker
+        key: ${{ runner.os }}-docker-${{ hashFiles('**/Dockerfile') }}
+        restore-keys: |
+          ${{ runner.os }}-docker-
 
     - name: Run Docker Compose
       run: |

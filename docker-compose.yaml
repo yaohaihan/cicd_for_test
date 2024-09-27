@@ -9,9 +9,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 123456
     volumes:
-      - "./mysql/conf:/etc/mysql/conf.d"
-      - "./mysql/data:/var/lib/mysql"
-      - "./mysql/init:/docker-entrypoint-initdb.d"
+      - "/home/mysql/conf:/etc/mysql/conf.d"
+      - "/home/mysql/data:/var/lib/mysql"
+      - "/home/mysql/init:/docker-entrypoint-initdb.d"
     networks:
       - emotion-net
   emotion-test:
