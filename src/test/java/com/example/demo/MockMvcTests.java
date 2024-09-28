@@ -4,7 +4,6 @@ package com.example.demo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.example.demo.DTO.UserDTO;
-import com.example.demo.Entity.User;
 import com.example.demo.Service.FriendshipService;
 import com.example.demo.Service.UserService;
 import org.junit.jupiter.api.DisplayName;
@@ -24,7 +23,7 @@ import static org.mockito.Mockito.*;
 
 @SpringBootTest(classes =  {DemoApplication.class}, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-public class MockMvcTestor {
+public class MockMvcTests {
     @Autowired
     private MockMvc mockMvc;
 
