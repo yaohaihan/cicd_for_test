@@ -50,7 +50,7 @@ public class MockMvcTests {
                 .andExpect(status().isOk())
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.code").value(0)) // 验证返回的 code
-                .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Susad")) // 验证返回的 message
+                .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Success")) // 验证返回的 message
                 .andReturn();
     }
 
