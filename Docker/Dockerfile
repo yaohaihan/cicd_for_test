@@ -1,4 +1,4 @@
-FROM openjdk:17
+FROM openjdk:17-jdk-bullseye
 EXPOSE 8080
 
 WORKDIR /root
