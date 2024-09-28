@@ -9,3 +9,5 @@ RUN apt-get update && \
 COPY target/demo*.jar /root/app.jar
 ENTRYPOINT ["java","-jar","/root/app.jar"]
 
+
+
