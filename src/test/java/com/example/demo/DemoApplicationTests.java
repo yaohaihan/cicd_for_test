@@ -11,9 +11,6 @@ class DemoApplicationTests {
     }
 
 
-    @Test
-    void testAddUser(){
 
-    }
 
 }
