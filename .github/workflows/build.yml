@@ -56,6 +56,6 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd /home/ubuntu/ec2
-            docker-compose down
-            docker-compose up --build --force-recreate -d
+            docker compose down
+            docker compose up --build --force-recreate -d
 
