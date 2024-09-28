@@ -4,6 +4,7 @@ package com.example.demo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.example.demo.DTO.UserDTO;
+import com.example.demo.Entity.User;
 import com.example.demo.Service.FriendshipService;
 import com.example.demo.Service.UserService;
 import org.junit.jupiter.api.DisplayName;
@@ -33,25 +34,25 @@ public class MockMvcTests {
     @MockBean
     private UserService userService;
 
-//    @Test
-//    @DisplayName("测试 POST 创建好友关系接口")
-//    public void testFriendController_ValidUserId() throws Exception {
-//        // 模拟 userService 的行为
-//        when(userService.getUser(1)).thenReturn(new User()); // 返回一个有效用户
-//        when(userService.getUser(2)).thenReturn(new User()); // 返回一个有效用户
-//        when(friendshipService.getFriendshipByTwoUserId(1, 2)).thenReturn(null); // 模拟没有好友关系
-//
-//        // 执行 POST 请求
-//        mockMvc.perform(MockMvcRequestBuilders.post("/friendship/BuildRelations")
-//                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-//                        .param("userId1", "1")
-//                        .param("userId2", "2"))
-//                .andExpect(status().isOk())
-//                .andDo(MockMvcResultHandlers.print())
-//                .andExpect(MockMvcResultMatchers.jsonPath("$.code").value(0)) // 验证返回的 code
-//                .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Susad")) // 验证返回的 message
-//                .andReturn();
-//    }
+    @Test
+    @DisplayName("测试 POST 创建好友关系接口")
+    public void testFriendController_ValidUserId() throws Exception {
+        // 模拟 userService 的行为
+        when(userService.getUser(1)).thenReturn(new User()); // 返回一个有效用户
+        when(userService.getUser(2)).thenReturn(new User()); // 返回一个有效用户
+        when(friendshipService.getFriendshipByTwoUserId(1, 2)).thenReturn(null); // 模拟没有好友关系
+
+        // 执行 POST 请求
+        mockMvc.perform(MockMvcRequestBuilders.post("/friendship/BuildRelations")
+                        .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                        .param("userId1", "1")
+                        .param("userId2", "2"))
+                .andExpect(status().isOk())
+                .andDo(MockMvcResultHandlers.print())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.code").value(0)) // 验证返回的 code
+                .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Susad")) // 验证返回的 message
+                .andReturn();
+    }
 
     @Test
     @DisplayName("测试 POST 创建用户接口")
@@ -81,7 +82,7 @@ public class MockMvcTests {
                 .andExpect(status().isOk())
                 .andDo(MockMvcResultHandlers.print())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.code").value(0))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("fal"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.message").value("Success"));
     }
 
 
